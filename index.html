@@ -45,10 +45,13 @@
         </div>
 
         <h2>Comments</h2>
-        <input type="text" id="commentInput" placeholder="Type your comment and press Enter">
+        <form id="commentForm" onsubmit="handleCommentSubmit(event)">
+            <input type="text" id="commentInput" placeholder="Type your comment">
+            <button type="submit">Submit</button>
+        </form>
         <div class="comments" id="comments">
             <!-- Comments will be added here dynamically -->
         </div>
     </div>
 </body>
-</html
+</html>
