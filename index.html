@@ -17,18 +17,18 @@
 </head>
 <body>
     <div class="container">
-        <div style="text-align: right;">
-            <button onclick="showPopup('loginPopup')" style="background-color: #009973; color: white;">Log In</button>
-            <button onclick="showPopup('signupPopup')" style="background-color: #009973; color: white;">Sign Up</button>
+        <div id="loginButtons" style="text-align: right;">
+            <button id="loginButton" onclick="showPopup('loginPopup')" style="background-color: #009973; color: white;">Log In</button>
+            <button id="signupButton" onclick="showPopup('signupPopup')" style="background-color: #009973; color: white;">Sign Up</button>
         </div>
         <h1>Welcome to Our ENWP2 Website</h1>
 
         <!-- Account System (Placeholder for demonstration) -->
         <div class="login-form" id="loginPopup">
             <h2>Login</h2>
-            <form>
-                <input type="text" placeholder="Username">
-                <input type="password" placeholder="Password">
+            <form id="loginForm">
+                <input type="text" id="loginUsername" placeholder="Username">
+                <input type="password" id="loginPassword" placeholder="Password">
                 <button type="submit">Log In</button>
             </form>
         </div>
@@ -44,6 +44,7 @@
             </form>
         </div>
 
+        <!-- Comments Section -->
         <h2>Comments</h2>
         <form id="commentForm" onsubmit="handleCommentSubmit(event)">
             <input type="text" id="commentInput" placeholder="Type your comment">
@@ -55,3 +56,4 @@
     </div>
 </body>
 </html>
+
