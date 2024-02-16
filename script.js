@@ -4,21 +4,29 @@ function showPopup(popupId) {
     popup.style.display = "block";
 }
 
-// Function to handle comments
-function handleCommentSubmit(event) {
+// Function to handle login form submission
+function handleLogin(event) {
     event.preventDefault();
-    const commentInput = document.getElementById("commentInput");
-    const comment = commentInput.value.trim();
-    if (comment !== "") {
-        addComment(comment);
-        commentInput.value = "";
+    // Replace this with your actual login logic
+    const username = document.getElementById("loginUsername").value;
+    const password = document.getElementById("loginPassword").value;
+    // Example: check if username and password match some predefined values
+    if (username === "example_user" && password === "password123") {
+        // Successful login
+        hideLoginButtons();
+    } else {
+        // Failed login
+        alert("Invalid username or password");
     }
 }
 
-// Function to add comment to the comment section
-function addComment(comment) {
-    const commentsDiv = document.getElementById("comments");
-    const commentDiv = document.createElement("div");
-    commentDiv.textContent = comment;
-    commentsDiv.appendChild(commentDiv);
+// Function to hide login and sign-up buttons
+function hideLoginButtons() {
+    const loginButton = document.getElementById("loginButton");
+    const signupButton = document.getElementById("signupButton");
+    loginButton.style.display = "none";
+    signupButton.style.display = "none";
 }
+
+// Add event listener for login form submission
+document.getElementById("loginForm").addEventListener("submit", handleLogin);
