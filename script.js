@@ -22,10 +22,3 @@ function addComment(comment) {
     commentDiv.textContent = comment;
     commentsDiv.appendChild(commentDiv);
 }
-
-// Example of listening to comments and triggering popups
-document.getElementById("commentInput").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        handleCommentSubmit(event);
-    }
-});
