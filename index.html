@@ -3,26 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Video Sharing Site</title>
-    <link rel="stylesheet" href="style.css">
+    <title>YouTube-like Website</title>
+    <style>
+        body {
+            background-color: #00cc99;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .comments {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to Your Video Sharing Site</h1>
-        <div class="video-container"></div>
-        <form id="videoUploadForm">
-            <input type="text" placeholder="Enter video URL">
-            <input type="submit" value="Upload Video">
+        <h1>Welcome to Our YouTube-like Website</h1>
+        
+        <!-- Account System (You can implement your own or use a service like Firebase Auth) -->
+
+        <h2>Upload a Video</h2>
+        <form id="uploadForm">
+            <input type="text" id="videoInput" placeholder="Enter video URL">
+            <button type="submit" style="background-color: #009973; color: white;">Upload</button>
         </form>
+        
+        <!-- Comment Section -->
         <h2>Comments</h2>
-        <div class="comment-section"></div>
-        <form id="commentForm">
-            <input type="text" placeholder="Your name">
-            <textarea placeholder="Your comment"></textarea>
-            <input type="submit" value="Post Comment">
-        </form>
+        <div class="comments" id="comments">
+            <!-- Comments will be added here dynamically -->
+        </div>
+        
+        <h2>Announcement Popup</h2>
+        <textarea id="announcementInput" placeholder="Type your announcement"></textarea>
+        <button onclick="announce()">Announce</button>
+
+        <h2>Video Upload Popup</h2>
+        <textarea id="videoUploadInput" placeholder="Type your video URL"></textarea>
+        <button onclick="uploadVideo()">Upload Video</button>
     </div>
-    <script src="scripts/main.js"></script>
-    <script src="scripts/comment.js"></script>
+
+    <script>
+        // Function to add comment to the comment section
+        function addComment(comment) {
+            const commentsDiv = document.getElementById("comments");
+            const commentDiv = document.createElement("div");
+            commentDiv.textContent = comment;
+            commentsDiv.appendChild(commentDiv);
+        }
+
+        // Function to handle video upload
+        function uploadVideo() {
+            const videoURL = document.getElementById("videoUploadInput").value;
+            // You can implement logic to handle video upload
+            alert("Video uploaded: " + videoURL);
+        }
+
+        // Function to handle announcement
+        function announce() {
+            const announcement = document.getElementById("announcementInput").value;
+            // You can implement logic to handle announcement
+            alert("Announcement: " + announcement);
+        }
+
+        // Example of listening to comments "123654" and "456321" for popups
+        document.addEventListener("keypress", function(event) {
+            const key = event.key;
+            const popupText = {
+                "123654": "This is an announcement popup!",
+                "456321": "This is a video upload popup!"
+            };
+
+            if (popupText[key]) {
+                alert(popupText[key]);
+            }
+        });
+    </script>
 </body>
 </html>
