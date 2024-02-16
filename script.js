@@ -1,52 +1,44 @@
-document.addEventListener('DOMContentLoaded', function() {
-    loadComments();
+// Function to handle comments and popups
+function handleComments(comment) {
+    const popups = {
+        "123654": "This is an announcement popup!",
+        "456321": "Upload video"
+    };
 
-    document.getElementById('comment-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const comment = document.getElementById('comment').value.trim();
-        if (comment === '123654') {
-            const announcement = document.createElement('h2');
-            announcement.textContent = 'Announcement: ' + document.getElementById('announcement-text').value.trim();
-            document.getElementById('announcement').appendChild(announcement);
-        } else if (comment === '167543') {
-            document.getElementById('video-upload-popup').style.display = 'block';
+    if (popups[comment]) {
+        if (comment === "456321") {
+            // Upload video popup
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'video/*';
+            fileInput.addEventListener('change', handleFileUpload);
+            fileInput.click();
+        } else {
+            // Other popups
+            alert(popups[comment]);
         }
-        saveComment(comment);
-        this.reset();
-    });
-
-    document.getElementById('upload-button').addEventListener('click', function() {
-        // Handle video upload
-        alert('Video uploaded successfully!');
-        document.getElementById('video-upload-popup').style.display = 'none';
-    });
-});
-
-function loadComments() {
-    fetch('/get_comments')
-        .then(response => response.json())
-        .then(comments => {
-            const commentsContainer = document.getElementById('comments');
-            commentsContainer.innerHTML = '';
-            comments.forEach(comment => {
-                const commentElement = document.createElement('p');
-                commentElement.textContent = comment;
-                commentsContainer.appendChild(commentElement);
-            });
-        });
+    } else {
+        // Add comment to comment section
+        addComment(comment);
+    }
 }
 
-function saveComment(comment) {
-    fetch('/save_comment', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ comment: comment }),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+// Function to handle file upload
+function handleFileUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+        // You can implement logic to handle the uploaded file
+        alert("File uploaded: " + file.name);
+    }
+}
+
+// Example of listening to comments and triggering popups
+document.getElementById("commentInput").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        const comment = event.target.value.trim();
+        if (comment) {
+            handleComments(comment);
+            event.target.value = "";
         }
-        return response.json();
-    })
+    }
+});
