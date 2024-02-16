@@ -1,5 +1,6 @@
+/* Add your CSS styles here */
 body {
-    background-color: #00cc99;
+    background-color: #f0f0f0;
     font-family: Arial, sans-serif;
 }
 
@@ -7,10 +8,6 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-}
-
-.comments {
-    margin-top: 20px;
 }
 
 .popup {
@@ -23,6 +20,4 @@ body {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
-
 }
