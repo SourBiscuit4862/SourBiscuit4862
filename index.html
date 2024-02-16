@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+    <style>
+        body {
+            background-color: #00e6ac;
+            font-family: Arial, sans-serif;
+        }
+        .button {
+            background-color: #00b386;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .input-box {
+            background-color: #00b386;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Website</h1>
+
+    <form id="comment-form" action="/save_comment" method="post">
+        <label for="comment">Comment:</label><br>
+        <textarea id="comment" name="comment" rows="4" cols="50" class="input-box"></textarea><br>
+        <input type="submit" value="Submit Comment" class="button">
+    </form>
+
+    <div id="comments"></div>
+
+    <div id="announcement"></div>
+
+    <div id="video-upload-popup">
+        <h2>Upload Video</h2>
+        <form action="/upload_video" method="post">
+            <input type="file" id="video" name="video" accept=".mp4"><br><br>
+            <input type="submit" value="Upload" class="button">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('comment').addEventListener('input', function() {
+            var comment = this.value;
+            if (comment === '123654') {
+                document.getElementById('announcement').innerText = 'Special Announcement';
+            } else {
+                document.getElementById('announcement').innerText = '';
+            }
+        });
+
+        document.getElementById('comment-form').addEventListener('submit', function(event) {
+            var comment = document.getElementById('comment').value;
+            if (comment === '167543') {
+                document.getElementById('video-upload-popup').style.display = 'block';
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
