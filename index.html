@@ -3,35 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website</title>
-    <style>
-        body {
-            background-color: #00e6ac;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .button {
-            background-color: #00b386;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            position: fixed;
-            top: 10px;
-            right: 10px;
-        }
-        .button:hover {
-            background-color: #008762;
-        }
-    </style>
+    <title>Your Video Sharing Site</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to the Website</h1>
-
-    <!-- Login/Signup Button -->
-    <a href="/login" class="button">Login / Sign Up</a>
-
-    <!-- Your website content goes here -->
+    <div class="container">
+        <h1>Welcome to Your Video Sharing Site</h1>
+        <div class="video-container"></div>
+        <form id="videoUploadForm">
+            <input type="text" placeholder="Enter video URL">
+            <input type="submit" value="Upload Video">
+        </form>
+        <h2>Comments</h2>
+        <div class="comment-section"></div>
+        <form id="commentForm">
+            <input type="text" placeholder="Your name">
+            <textarea placeholder="Your comment"></textarea>
+            <input type="submit" value="Post Comment">
+        </form>
+    </div>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/comment.js"></script>
 </body>
 </html>
