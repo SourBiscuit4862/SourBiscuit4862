@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube-like Website</title>
+    <title>ENWP2</title>
     <style>
         body {
             background-color: #00cc99;
@@ -17,12 +17,27 @@
         .comments {
             margin-top: 20px;
         }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div style="text-align: right;">
+            <button onclick="showPopup('loginPopup')" style="background-color: #009973; color: white;">Log In</button>
+            <button onclick="showPopup('signupPopup')" style="background-color: #009973; color: white;">Sign Up</button>
+        </div>
         <h1>Welcome to Our YouTube-like Website</h1>
-        
+
         <!-- Account System (You can implement your own or use a service like Firebase Auth) -->
 
         <h2>Upload a Video</h2>
@@ -30,13 +45,13 @@
             <input type="text" id="videoInput" placeholder="Enter video URL">
             <button type="submit" style="background-color: #009973; color: white;">Upload</button>
         </form>
-        
+
         <!-- Comment Section -->
         <h2>Comments</h2>
         <div class="comments" id="comments">
             <!-- Comments will be added here dynamically -->
         </div>
-        
+
         <h2>Announcement Popup</h2>
         <textarea id="announcementInput" placeholder="Type your announcement"></textarea>
         <button onclick="announce()">Announce</button>
@@ -46,7 +61,25 @@
         <button onclick="uploadVideo()">Upload Video</button>
     </div>
 
+    <!-- Login Popup -->
+    <div id="loginPopup" class="popup">
+        <h2>Login</h2>
+        <!-- Add your login form here -->
+    </div>
+
+    <!-- Signup Popup -->
+    <div id="signupPopup" class="popup">
+        <h2>Sign Up</h2>
+        <!-- Add your signup form here -->
+    </div>
+
     <script>
+        // Function to show popup
+        function showPopup(popupId) {
+            const popup = document.getElementById(popupId);
+            popup.style.display = "block";
+        }
+
         // Function to add comment to the comment section
         function addComment(comment) {
             const commentsDiv = document.getElementById("comments");
@@ -81,6 +114,12 @@
                 alert(popupText[key]);
             }
         });
+
+        // Prevent form submission (for demonstration)
+        document.getElementById("uploadForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+        });
     </script>
 </body>
 </html>
+
