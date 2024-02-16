@@ -1,6 +1,6 @@
 /* Add your CSS styles here */
 body {
-    background-color: #f0f0f0;
+    background-color: #00cc99;
     font-family: Arial, sans-serif;
 }
 
@@ -20,4 +20,17 @@ body {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+button {
+    background-color: #009973;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #007d5e;
 }
